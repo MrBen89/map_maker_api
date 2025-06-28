@@ -1,0 +1,2 @@
+class SquareTile < ApplicationRecord
+end
