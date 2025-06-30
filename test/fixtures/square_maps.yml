@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  lower_tile: MyText
+  mid_tile: MyText
+  upper_tile: MyText
+  lower_icon: MyText
+  mid_icon: MyText
+  upper_icon: MyText
+  user: one
+
+two:
+  name: MyText
+  lower_tile: MyText
+  mid_tile: MyText
+  upper_tile: MyText
+  lower_icon: MyText
+  mid_icon: MyText
+  upper_icon: MyText
+  user: two
