@@ -1,0 +1,2 @@
+class SquareMapTilesController < ApplicationController
+end

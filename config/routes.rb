@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   #get "up" => "rails/health#show", as: :rails_health_check
 
   get "/square_maps/:id", to: "square_maps#show"
+  post "/square_maps", to: "square_maps#create"
+  patch "/square_maps/:id", to: "square_maps#update"
+
+  get "/square_tiles", to: "square_tiles#all"
 
   # Defines the root path route ("/")
   # root "posts#index"
