@@ -11,6 +11,12 @@ Rails.application.routes.draw do
 
   get "/square_tiles", to: "square_tiles#all"
 
+  get "/square_map_tiles/:id", to: "square_map_tiles#show"
+  post "/square_map_tiles", to: "square_map_tiles#create"
+  patch "/square_map_tiles/:id", to: "square_map_tiles#update"
+
+  get "users/:id", to: "users#show"
+
   # Defines the root path route ("/")
   # root "posts#index"
 end
