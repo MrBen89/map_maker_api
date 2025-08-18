@@ -3,7 +3,9 @@ class SessionsController < ApplicationController
 
   def create
     # user = User.find_by(email: params["user"]["email"]).try(:authenticate, params["user"]["password"])
-    user = User.find_by(username: params["username"]).try(:authenticate, params["user"]["password"])
+    p " hello! #{User.find_by(username: "Derek")}"
+    user = User.find_by(username: "Derek")
+    # (username: params["user"]["username"]).try(:authenticate, params["user"]["password"])
 
     if user
       session[:user_id] = user.id 
