@@ -155,7 +155,8 @@ p "Deleting #{User.count} Users"
 User.destroy_all
 
 User.create!([{
-    username: "temp"
+    username: "temp",
+    password: "password",
 }])
 
 p "Created #{User.count} Users"
