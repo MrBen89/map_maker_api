@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-    has_secure_password
-    validates_presence_of :username, :password
-    validates_uniqueness_of :username
+    include Devise::JWT::RevocationStrategies::JTIMatcher
+
+    devise :database_authenticatable, :registerable, :recoverable, 
+           :validatable, :jwt_authenticatable, jwt_revocation_strategy: self
+
     has_many :square_maps, dependent: :destroy
 end

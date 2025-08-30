@@ -1,9 +1,10 @@
 class RegistrationsController < ApplicationController
   def create 
+    p params
     user = User.create!(
-      username: params["user"]["username"],
-      password: params["user"]["password"],
-      password_confirmation: params["user"]["password_confirmation"]
+      username: params["username"],
+      password: params["password"],
+      password_confirmation: params["password_confirmation"]
     )
 
     if user 
@@ -16,4 +17,4 @@ class RegistrationsController < ApplicationController
       render json: { status: 500 }
     end
   end
-ens
+end

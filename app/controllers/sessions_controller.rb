@@ -2,9 +2,10 @@ class SessionsController < ApplicationController
   include CurrentUserConcern
 
   def create
-    # user = User.find_by(email: params["user"]["email"]).try(:authenticate, params["user"]["password"])
-    p " hello! #{User.find_by(username: "Derek")}"
-    user = User.find_by(username: "Derek")
+    user = User.find_by(username: params["username"]).try(:authenticate, params["password"])
+    p " hello! #{user.inspect}"
+    # p "also hello! #{@current_user.username}"
+    # user = User.find_by(username: "Derek")
     # (username: params["user"]["username"]).try(:authenticate, params["user"]["password"])
 
     if user
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def logged_in
+    p "Current user: #{@current_user.inspect}"
     if @current_user
       render json: {
         logged_in: true,

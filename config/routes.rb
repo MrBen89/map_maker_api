@@ -7,9 +7,6 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create]
 
-  delete :logout, to: "sessions#logout"
-  get :logged_in, to: "sessions#logged_in"
-
   get "/square_maps/:id", to: "square_maps#show"
   post "/square_maps", to: "square_maps#create"
   patch "/square_maps/:id", to: "square_maps#update"
@@ -20,7 +17,15 @@ Rails.application.routes.draw do
   post "/square_map_tiles", to: "square_map_tiles#create"
   patch "/square_map_tiles/:id", to: "square_map_tiles#update"
 
-  get "users/:id", to: "users#show"
+  devise_for :users, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    registration: 'signup'
+  },
+  controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
   # Defines the root path route ("/")
   # root "posts#index"

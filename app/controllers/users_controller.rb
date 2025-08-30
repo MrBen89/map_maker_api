@@ -6,4 +6,12 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordNotFound
         render json: { error: "User not found" }, status: :not_found
     end
+
+    def create
+        p params
+        user = User.new(params)
+        if user.save
+            render json: { message: "User created successfully", user: user }, status: :created
+        end
+    end
 end

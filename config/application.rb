@@ -31,11 +31,17 @@ module MapMakerApi
     if Rails.env == "production"
       Rails.application.config.session_store :cookie_store, key: "_authentication_app", domain: "https://link-to-your-production-app.com/"
     else
-      Rails.application.config.session_store :cookie_store, key: "_authentication_app"
+      # Rails.application.config.session_store :cookie_store, key: "_authentication_app1", same_site: :none, secure: true
+      Rails.application.config.session_store :cookie_store,
+      key: '_auth',
+      same_site: :none, # 👈 required for cross-origin
+      secure: Rails.env.production? || true
     end
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use config.session_store, config.session_options
+    # config.middleware.use ActionDispatch::Cookies
+    # config.middleware.use config.session_store, config.session_options
 
     config.api_only = true
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
   end
 end
